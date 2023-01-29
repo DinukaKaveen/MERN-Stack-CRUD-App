@@ -74,18 +74,21 @@ router.put('/post/update/:id',(req,res) => {
         (err) => {
             if(err){
                 return res.status(400).json({
-                error: err
+                    error: err
                 });
             }
-        return res.status(200).json({
-            success: "Update Successfully"
+            return res.status(200).json({
+                success: "Update Successfully"
         });
     });
 });
 
 //delete post
 router.delete('/post/delete/:id', (req,res) => {
-    Posts_tbl.findByIdAndRemove(req.params.id).exec((err,deletedPost) => {
+
+    let postID = req.params.id;
+    
+    Posts_tbl.findByIdAndRemove(postID).exec((err,deletedPost) => {
         if(err){
             return res.status(400).json({
                 message: "Delete Fail",
