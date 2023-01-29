@@ -43,6 +43,25 @@ router.get('/posts', (req,res) =>{
     });
 });
 
+//get post by specific ID
+router.get('/post/:id', (req,res) => {
+
+    let postID = req.params.id;
+    
+    Posts_tbl.findById(postID, (err,specificPost) => {
+        if(err){
+            return res.status(400).json({
+                success: false,
+                err
+            });
+        }
+        return res.status(200).json({
+            success: true,
+            specificPost
+        });
+    });
+});
+
 //update post
 router.put('/post/update/:id',(req,res) => {
     Posts_tbl.findByIdAndUpdate(
