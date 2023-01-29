@@ -64,22 +64,23 @@ router.get('/post/:id', (req,res) => {
 
 //update post
 router.put('/post/update/:id',(req,res) => {
-    Posts_tbl.findByIdAndUpdate(
-        req.params.id, //request id
+
+    let postID = req.params.id; //request id
+
+    Posts_tbl.findByIdAndUpdate(postID, 
         {
-            $set:req.body //update request's body by id
-        },
-        (err) =>{
+            $set:req.body
+        }, 
+        (err) => {
             if(err){
                 return res.status(400).json({
-                    error: err
+                error: err
                 });
             }
-            return res.status(200).json({
-                success: "Update Successfully"
-            });
-        }
-    );
+        return res.status(200).json({
+            success: "Update Successfully"
+        });
+    });
 });
 
 //delete post
