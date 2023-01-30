@@ -6,9 +6,9 @@ export default class NavBar extends Component {
     return (
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            Navbar
-          </a>
+          <Link to="/" className="nav-link active" aria-current="page">
+            Home
+          </Link>
           <button
             class="navbar-toggler"
             type="button"
@@ -23,10 +23,14 @@ export default class NavBar extends Component {
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <Link to="/" className="nav-link active" aria-current="page">Home</Link>
+                <Link to="/" className="nav-link active" aria-current="page">
+                  Home
+                </Link>
               </li>
               <li class="nav-item">
-                <Link to="/add" className="nav-link">Create Post</Link>
+                <Link to="/add" className="nav-link">
+                  Create Post
+                </Link>
               </li>
             </ul>
           </div>
