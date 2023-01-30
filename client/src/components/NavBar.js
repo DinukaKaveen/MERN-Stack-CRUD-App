@@ -7,7 +7,7 @@ export default class NavBar extends Component {
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <Link to="/" className="nav-link active" aria-current="page">
-            Home
+            NavBar
           </Link>
           <button
             class="navbar-toggler"
