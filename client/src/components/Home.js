@@ -42,7 +42,7 @@ export default class Home extends Component {
           </thead>
           <tbody class="table-group-divider">
             {this.state.allPosts.map((posts, index) => (
-              <tr>
+              <tr key={index}>
                 <th scope="row">{index + 1}</th>
                 <td>{posts.topic}</td>
                 <td>{posts.description}</td>
