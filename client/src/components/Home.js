@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-//import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default class Home extends Component {
   constructor(props) {
@@ -48,9 +48,17 @@ export default class Home extends Component {
                 <td>{posts.description}</td>
                 <td>{posts.postCategory}</td>
                 <td>
-                  <button type="button" class="btn btn-outline-success">
+                  <Link to={`/post/${posts._id}`} type="button" className="btn btn-outline-success">
                     <i className="fa-solid fa-eye"></i>
-                  </button>
+                  </Link>
+                  &nbsp;
+                  <Link to={`/edit/${posts._id}`} type="button" className="btn btn-outline-warning">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </Link>
+                  &nbsp;
+                  <Link to="" type="button" className="btn btn-outline-danger">
+                    <i class="fa-solid fa-trash"></i>
+                  </Link>
                 </td>
               </tr>
             ))}
