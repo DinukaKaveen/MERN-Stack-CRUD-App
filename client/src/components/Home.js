@@ -17,7 +17,7 @@ export default class Home extends Component {
   }
 
   retrievePosts() {
-    axios.get("http://localhost:8000/posts").then((res) => {
+    axios.get("/posts").then((res) => {
       if (res.data.success) {
         this.setState({
           allPosts: res.data.existingPosts,
