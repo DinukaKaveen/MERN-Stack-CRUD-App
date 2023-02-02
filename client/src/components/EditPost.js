@@ -37,7 +37,7 @@ export default function CreatePost() {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{paddingTop: 30}}>
       <center>
         <h2>Edit Post</h2>
       </center>

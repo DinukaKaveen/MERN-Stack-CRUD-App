@@ -15,9 +15,14 @@ export default function Home() {
     setPosts(result.data.existingPosts);
   };
 
-  
+  //Delete Post
+  const deletePost = async (id) => {
+    await axios.delete(`/post/delete/${id}`);
+    loadPosts();
+  };
+
   return (
-    <div>
+    <div className="container" style={{paddingTop: 30}}>
       <table className="table">
         <thead>
           <tr>
@@ -29,9 +34,7 @@ export default function Home() {
           </tr>
         </thead>
         <tbody className="table-group-divider">
-
           {allPosts.map((posts, index) => (
-
             <tr key={index}>
               <th scope="row">{index + 1}</th>
               <td>{posts.topic}</td>
@@ -54,14 +57,17 @@ export default function Home() {
                   <i className="fa-solid fa-pen-to-square"></i>
                 </Link>
                 &nbsp;
-                <Link to="" type="button" className="btn btn-outline-danger">
+                <Link
+                  to=""
+                  onClick={() => deletePost(posts._id)}
+                  type="button"
+                  className="btn btn-outline-danger"
+                >
                   <i className="fa-solid fa-trash"></i>
                 </Link>
               </td>
             </tr>
-            
           ))}
-
         </tbody>
       </table>
     </div>

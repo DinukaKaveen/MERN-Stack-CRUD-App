@@ -6,8 +6,8 @@ export default function NavBar() {
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <Link to="/" className="nav-link active" aria-current="page">
-            NavBar
+          <Link to="/" className="navbar-brand" aria-current="page">
+            <b>MERN CRUD App</b>
           </Link>
           <button
             className="navbar-toggler"

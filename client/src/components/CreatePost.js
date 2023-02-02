@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function CreatePost() {
+
   let navigate = useNavigate();
 
   const [postData, setPost] = useState({
@@ -24,7 +25,7 @@ export default function CreatePost() {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{paddingTop: 30}}>
       <center>
         <h2>Create New Post</h2>
       </center>
