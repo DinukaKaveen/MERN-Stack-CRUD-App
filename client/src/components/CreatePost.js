@@ -3,32 +3,31 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function CreatePost() {
+  let navigate = useNavigate();
 
-  let navigate = useNavigate()
-
-  const [postDetails, setPost] = useState({
+  const [postData, setPost] = useState({
     topic: "",
     description: "",
     postCategory: "",
   });
 
-  const { topic, description, postCategory } = postDetails;
+  const { topic, description, postCategory } = postData;
 
   const onInputChange = (e) => {
-    setPost({ ...postDetails, [e.target.name]: e.target.value });
+    setPost({ ...postData, [e.target.name]: e.target.value });
   };
 
   const submitPost = async (e) => {
-
     e.preventDefault();
-    await axios.post("/post/save", postDetails)
-    navigate("/")
+    await axios.post("/post/save", postData);
+    navigate("/");
   };
-
-
 
   return (
     <div className="container">
+      <center>
+        <h2>Create New Post</h2>
+      </center>
       <form onSubmit={(e) => submitPost(e)}>
         <div className="form-group">
           <label>Topic</label>
