@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function CreatePost() {
-
   let navigate = useNavigate();
 
   const [postData, setPost] = useState({
@@ -15,7 +14,10 @@ export default function CreatePost() {
   const { topic, description, postCategory } = postData;
 
   const onInputChange = (e) => {
-    setPost({ ...postData, [e.target.name]: e.target.value });
+    setPost({
+      ...postData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const submitPost = async (e) => {
@@ -25,7 +27,7 @@ export default function CreatePost() {
   };
 
   return (
-    <div className="container" style={{paddingTop: 30}}>
+    <div className="container" style={{ paddingTop: "30px" }}>
       <center>
         <h2>Create New Post</h2>
       </center>

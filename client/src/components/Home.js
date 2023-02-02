@@ -7,7 +7,9 @@ export default function Home() {
   const [allPosts, setPosts] = useState([]);
 
   useEffect(() => {
+
     loadPosts();
+    
   }, []);
 
   const loadPosts = async () => {
@@ -22,7 +24,7 @@ export default function Home() {
   };
 
   return (
-    <div className="container" style={{paddingTop: 30}}>
+    <div className="container" style={{paddingTop: '30px'}}>
       <table className="table">
         <thead>
           <tr>

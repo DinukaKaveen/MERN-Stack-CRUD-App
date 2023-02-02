@@ -15,7 +15,7 @@ export default function PostDetails() {
   useEffect(() => {
 
     loadPost();
-    
+
   }, []);
 
   const loadPost = async () => {
@@ -24,7 +24,7 @@ export default function PostDetails() {
   };
 
   return (
-    <div className="container" style={{ paddingTop: 30 }}>
+    <div className="container" style={{ paddingTop: '30px' }}>
       <div className="card">
         <ul className="list-group list-group-flush">
           <li className="list-group-item">

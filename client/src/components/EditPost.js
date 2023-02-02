@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function CreatePost() {
-
   const { id } = useParams();
   let navigate = useNavigate();
 
@@ -16,7 +15,10 @@ export default function CreatePost() {
   const { topic, description, postCategory } = postData;
 
   const onInputChange = (e) => {
-    setPost({ ...postData, [e.target.name]: e.target.value });
+    setPost({
+      ...postData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   //Get Post
@@ -26,18 +28,24 @@ export default function CreatePost() {
 
   const loadPost = async () => {
     const result = await axios.get(`/post/${id}`);
-    setPost(result.data.specificPost); 
+    setPost(result.data.specificPost);
   };
 
   //Update Post
   const submitPost = async (e) => {
     e.preventDefault();
-    await axios.put(`/post/update/${id}`, postData);
-    navigate("/");
+    await axios.put(`/post/update/${id}`, postData)
+      .then(() => {
+        alert("Edit Success");
+        navigate("/");
+      })
+      .catch((e) => {
+        alert("Edit Fail"+e)
+      });
   };
 
   return (
-    <div className="container" style={{paddingTop: 30}}>
+    <div className="container" style={{ paddingTop: "30px" }}>
       <center>
         <h2>Edit Post</h2>
       </center>
