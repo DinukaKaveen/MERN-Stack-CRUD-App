@@ -3,8 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 export default function PostDetails() {
-
-  const {id} = useParams()
+  const { id } = useParams();
 
   const [postData, setPost] = useState({
     topic: "",
@@ -16,57 +15,32 @@ export default function PostDetails() {
   useEffect(() => {
 
     loadPost();
-
+    
   }, []);
 
   const loadPost = async () => {
     const result = await axios.get(`/post/${id}`);
-    setPost(result.data.specificPost); 
+    setPost(result.data.specificPost);
   };
 
   return (
-    <div className="container" style={{paddingTop: 30}}>
-      <form>
-        <div className="form-group row">
-          <label className="col-sm-2 col-form-label">
-            <b>Topic</b>
-          </label>
-          <div className="col-sm-10">
-            <input
-              type="text"
-              readOnly={true}
-              className="form-control-plaintext"
-              value={postData.topic}
-            />
-          </div>
-        </div>
-        <div className="form-group row">
-          <label className="col-sm-2 col-form-label">
-            <b>Description</b>
-          </label>
-          <div className="col-sm-10">
-            <input
-              type="text"
-              readOnly={true}
-              className="form-control-plaintext"
-              value={postData.description}
-            />
-          </div>
-        </div>
-        <div className="form-group row">
-          <label className="col-sm-2 col-form-label">
-            <b>Post Category</b>
-          </label>
-          <div className="col-sm-10">
-            <input
-              type="text"
-              readOnly={true}
-              className="form-control-plaintext"
-              value={postData.postCategory}
-            />
-          </div>
-        </div>
-      </form>
+    <div className="container" style={{ paddingTop: 30 }}>
+      <div className="card">
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item">
+            <b>Topic:</b>&nbsp;
+            {postData.topic}
+          </li>
+          <li className="list-group-item">
+            <b>Description:</b>&nbsp;
+            {postData.description}
+          </li>
+          <li className="list-group-item">
+            <b>Podt Category:</b>&nbsp;
+            {postData.postCategory}
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }
