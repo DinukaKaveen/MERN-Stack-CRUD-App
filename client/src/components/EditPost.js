@@ -1,9 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class EditPost extends Component {
-  render() {
-    return (
-      <div>EditPost</div>
-    )
-  }
+export default function EditPost() {
+  return (
+    <div>EditPost</div>
+  )
 }
