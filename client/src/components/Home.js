@@ -15,6 +15,7 @@ export default function Home() {
     setPosts(result.data.existingPosts);
   };
 
+  
   return (
     <div>
       <table className="table">
