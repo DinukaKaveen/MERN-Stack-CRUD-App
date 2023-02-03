@@ -22,8 +22,14 @@ export default function CreatePost() {
 
   const submitPost = async (e) => {
     e.preventDefault();
-    await axios.post("/post/save", postData);
-    navigate("/");
+    await axios.post("/post/save", postData)
+      .then(() => {
+        alert("Successfully Created");
+        navigate("/");
+      })
+      .catch(() => {
+        alert("Create Fail" + e);
+      })
   };
 
   return (
