@@ -35,12 +35,17 @@ export default function CreatePost() {
   const submitPost = async (e) => {
     e.preventDefault();
     await axios.put(`/post/update/${id}`, postData)
-      .then(() => {
-        alert("Edit Success");
-        navigate("/");
+      .then(res => {
+        if(res.data.success){
+          alert(res.data.message);
+          navigate("/");
+        }
+        else{
+          alert(res.data.message);
+        }
       })
-      .catch((e) => {
-        alert("Edit Fail"+e)
+      .catch((err) => {
+        alert("Error: "+err)
       });
   };
 

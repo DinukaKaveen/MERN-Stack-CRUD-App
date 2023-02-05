@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function CreatePost() {
+  
   let navigate = useNavigate();
 
   const [postData, setPost] = useState({
@@ -23,13 +24,18 @@ export default function CreatePost() {
   const submitPost = async (e) => {
     e.preventDefault();
     await axios.post("/post/save", postData)
-      .then(() => {
-        alert("Successfully Created");
-        navigate("/");
+      .then((res) => {
+        if (res.data.success) {
+          alert(res.data.message);
+          navigate("/");
+        } 
+        else {
+          alert(res.data.message);
+        }
       })
-      .catch(() => {
-        alert("Create Fail" + e);
-      })
+      .catch((err) => {
+        alert("Error: " + err);
+      });
   };
 
   return (

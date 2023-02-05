@@ -9,18 +9,19 @@ const router = express.Router(); //define router constructor to send http reques
 
 //save posts using router.post method
 router.post("/post/save", (req, res) => {
-    
   let newPost = new Posts_tbl(req.body); //get request's body of Posts constructor into newPost variable
 
   //save post
   newPost.save((err) => {
     if (err) {
       return res.status(400).json({
-        error: err,
+        success: false,
+        message: "Post Save Fail",
       });
     }
     return res.status(200).json({
-      success: "Post Save Successfully",
+      success: true,
+      message: "Post Save Successfully",
     });
   });
 });
@@ -31,7 +32,7 @@ router.get("/posts", (req, res) => {
   Posts_tbl.find().exec((err, existingPosts) => {
     if (err) {
       return res.status(400).json({
-        error: err,
+        success: false,
       });
     }
     return res.status(200).json({
@@ -49,7 +50,6 @@ router.get("/post/:id", (req, res) => {
     if (err) {
       return res.status(400).json({
         success: false,
-        err,
       });
     }
     return res.status(200).json({
@@ -66,11 +66,13 @@ router.put("/post/update/:id", (req, res) => {
   Posts_tbl.findByIdAndUpdate(postID, { $set: req.body }, (err) => {
     if (err) {
       return res.status(400).json({
-        error: err,
+        success: false,
+        message: "Update Fail",
       });
     }
     return res.status(200).json({
-      success: "Update Successfully",
+      success: true,
+      message: "Successfully Update",
     });
   });
 });
@@ -82,12 +84,13 @@ router.delete("/post/delete/:id", (req, res) => {
   Posts_tbl.findByIdAndRemove(postID).exec((err, deletedPost) => {
     if (err) {
       return res.status(400).json({
+        success: false,
         message: "Delete Fail",
-        error: err,
       });
     }
     return res.status(200).json({
-      message: "Delete Successfully",
+      success: true,
+      message: "Successfully Delete",
       deletedPost: deletedPost,
     });
   });
