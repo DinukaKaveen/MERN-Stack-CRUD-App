@@ -7,12 +7,10 @@ import NavBar from "./components/NavBar";
 import PostDetails from "./components/PostDetails";
 
 export default function App() {
-
   return (
     <BrowserRouter>
       <div>
         <NavBar />
-        
         <Routes>
           <Route path="/" exact element={<Home />}></Route>
           <Route path="/add" element={<CreatePost />}></Route>

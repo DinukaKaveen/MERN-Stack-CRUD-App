@@ -1,8 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { ReactSession } from 'react-client-session';
+import Alert from "./Alert";
 
-export default function CreatePost() {
+export default function EditPost() {
+
+  ReactSession.setStoreType("sessionStorage");
   
   const { id } = useParams();
   let navigate = useNavigate();
@@ -38,8 +42,10 @@ export default function CreatePost() {
     await axios.put(`/post/update/${id}`, postData)
       .then(res => {
         if(res.data.success){
-          alert(res.data.message);
-          navigate("/");
+          ReactSession.set("message", res.data.message);
+          window.location.reload();
+          //alert(res.data.message);
+          //navigate("/");
         }
         else{
           alert(res.data.message);
@@ -52,6 +58,7 @@ export default function CreatePost() {
 
   return (
     <div className="container" style={{ paddingTop: "30px" }}>
+      <Alert/>
       <center>
         <h2>Edit Post</h2>
       </center>
