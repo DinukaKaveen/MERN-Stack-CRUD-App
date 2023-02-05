@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function CreatePost() {
+  
   const { id } = useParams();
   let navigate = useNavigate();
 
