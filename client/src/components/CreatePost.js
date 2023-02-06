@@ -32,7 +32,6 @@ export default function CreatePost() {
         if (res.data.success) {
           ReactSession.set("message", res.data.message);
           window.location.reload();
-          //alert(res.data.message);
           //navigate("/");
         } 
         else {
