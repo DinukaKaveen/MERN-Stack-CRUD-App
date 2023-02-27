@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
 
+  //allPosts - current state of this component, setPosts - function that update the allPosts
   const [allPosts, setPosts] = useState([]);
 
+  //if allPosts variable update, useEffect will run again
   useEffect(() => {
 
     loadPosts();
