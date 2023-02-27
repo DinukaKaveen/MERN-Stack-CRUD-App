@@ -12,7 +12,7 @@ export default function Home() {
 
     loadPosts();
     
-  }, []);
+  }, []); //define empty array[] to run useEffect once when page loading. without empty array[], it will run unlimited times
 
   const loadPosts = async () => {
     const result = await axios.get("/posts");
